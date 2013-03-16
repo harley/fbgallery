@@ -8,6 +8,10 @@ var fbgalleryApp = angular.module('fbgalleryApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/page/:pagename', {
+         templateUrl: 'views/main.html',
+         controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

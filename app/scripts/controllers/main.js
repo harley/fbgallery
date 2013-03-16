@@ -1,18 +1,11 @@
 'use strict';
 
-fbgalleryApp.controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Testacular'
-    ];
-
-//    $http.get('data/albums.json')
-//        .then(function (res) {
-//            $scope.albums = res.data.data;
-//            window.albums = $scope.albums;
-//            $scope.albums = [];
-//        });
+fbgalleryApp.controller('MainCtrl', function ($scope, $http, $routeParams, $location) {
+    $scope.exampleNames = ["nike", "pepsi", "dell", "htc", "facebook"];
+    $scope.goToAlbum = function(username) {
+        console.log("going to ", "page/" + username)
+        $location.path("/page/" + username);
+    }
     $scope.getAlbumImageUrl = function(album) {
         return "http://graph.facebook.com/" + album.cover_photo + "/picture";
     }
@@ -32,6 +25,12 @@ fbgalleryApp.controller('MainCtrl', function ($scope, $http) {
                 window.albums = $scope.albums;
             });
         }).error(function() { alert("Error querying facebook. Maybe you have 'disconnect' extension or something else that blocks facebook. Note this doesn't work with facebook usernames"); })
+    }
+
+    if ($routeParams.pagename) {
+        console.log("pagename", $routeParams.pagename);
+        $scope.username = $routeParams.pagename;
+        $scope.getAlbums($routeParams.pagename);
     }
 });
 
