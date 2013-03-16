@@ -4,21 +4,17 @@
 		Enter a facebook page name
 		<input type="text" ng-model="username" />
 		<a ng-click="getAlbums(username)" class="btn">Get Albums</a>
-		<span help-inline="E.g. nike, pepsi, dell, htc, facebook"
+		<span class="help-inline">E.g. nike, pepsi, dell, htc, facebook</span>
 	</div>
 	<div class="row-fluid">
 		<ul class="thumbnails row-of-four">
-			<li ng-repeat="album in albums" class="span3" style="height:300px">
-				<a href="{{album.link}}">
-					<div class="thumbnail">
-						<img ng-src="{{getAlbumImageUrl(album)}}" style="max-height:210px"/>
-
-						<div class="caption" style="padding-bottom:0">
-							{{album.name}}
-							<p style="text-align:center;font-size:80%">{{album.count}} photos</p>
-						</div>
-					</div>
-				</a>
+			<li ng-repeat="album in albums | filter:excludeProfileAndCoverPics" class="span3 image-wrapper">
+				<img ng-src="{{getAlbumImageUrl(album)}}"/>
+				<div class="overlay-caption">
+					<a href="{{album.link}}">
+						{{album.name}} <span class="photo-count">({{album.count}} photos)</span>
+					</a>
+				</div>
 			</li>
 		</ul>
 	</div>

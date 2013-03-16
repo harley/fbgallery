@@ -31,7 +31,7 @@ fbgalleryApp.controller('MainCtrl', function ($scope, $http) {
                 console.log($scope.albums);
                 window.albums = $scope.albums;
             });
-        }).error(function() { alert("Error querying facebook. Note this doesn't work with facebook usernames"); })
+        }).error(function() { alert("Error querying facebook. Maybe you have 'disconnect' extension or something else that blocks facebook. Note this doesn't work with facebook usernames"); })
     }
 });
 

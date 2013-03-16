@@ -1,0 +1,25 @@
+li.image-wrapper {
+  height: 140px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  position: relative;
+  .overlay-caption {
+    line-height: 14px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    padding: 3px;
+    a {
+      color: white;
+      .photo-count {
+        color: #ddd;
+        white-space: nowrap;
+      }
+    }
+    font-size: 12px;
+  }
+}
